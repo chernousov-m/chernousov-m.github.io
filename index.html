@@ -3,235 +3,172 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Your Name's resume site" />
-        <meta name="author" content="Your Name" /> 
-        <title>Your Name</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/png" href="images/favicon.png"/>
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://cdn.rawgit.com/knsv/mermaid/0.5.6/dist/mermaid.css">
-        <!-- Highlight JS -->
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Resume - Start Bootstrap Theme</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+        <!--highlightjs-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/monokai_sublime.css">
-		<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
-        <script src="https://unpkg.com/mermaid@8.1.0/dist/mermaid.js"></script>
-        <script>mermaid.initialize({startOnLoad:true});</script>
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-000000-0"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-000000-0');
-        </script>
-                <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <body>
-        <h1> Configuration Values </h1>
-        <h2>Full dictionary </h2>
-        {<br>'address': '123 first street SE',<br> 'avatar': 'https://startbootstrap.github.io/startbootstrap-freelancer/assets/img/avataaars.svg',<br> 'background': 'https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',<br> 'biography': 'A vivid and succinct description of yourself.\n'<br>              'This biography is so important it spans multiple lines.\n',<br> 'company': 'Company name',<br> 'email': 'email@example.com',<br> 'examples': True,<br> 'ignore_exif_data': False,<br> 'name': 'Your Name',<br> 'phone': '123-123-1234',<br> 'remotes': {<br>'aerial': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/aerial_0.3.3.zip',<br>             'blog': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/blog_0.3.3.zip',<br>             'creative': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/creative_0.3.3.zip',<br>             'cv': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/cv_0.3.3.zip',<br>             'ethereal': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/ethereal_0.3.3.zip',<br>             'evie': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/evie_0.3.3.zip',<br>             'freelancer': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/freelancer_0.3.3.zip',<br>             'grayscale': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/grayscale_0.3.3.zip',<br>             'identity': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/identity_0.3.3.zip',<br>             'lens': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/lens_0.3.3.zip',<br>             'massively': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/massively_0.3.3.zip',<br>             'paradigm_shift': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/paradigm_shift_0.3.3.zip',<br>             'parallax': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/parallax_0.3.3.zip',<br>             'read_only': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/read_only_0.3.3.zip',<br>             'solid_state': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/solid_state_0.3.3.zip',<br>             'strata': 'https://github.com/QU-UP/ezcv-themes/releases/download/0.3.3/strata_0.3.3.zip'<br>    },<br> 'resume': False,<br> 'role': 'Your job role/title (i.e. CEO)',<br> 'social': {<br>'facebook': 'your id',<br>            'github': 'descent098',<br>            'instagram': 'username',<br>            'linkedin': 'name',<br>            'snapchat': 'username',<br>            'twitch': 'username',<br>            'twitter': 'handle',<br>            'url': 'https://kieranwood.ca',<br>            'youtube': '/channel/channel-ID or custom_url'<br>    },<br> 'theme': 'base',<br> 'ua_code': 'UA-000000-0'<br>    }
-        <h2>Individual config variables</h2>
-        <ul>
-            <ul>
-                <li>config["name"]: Your Name</li>
-                <li>config["email"]: email@example.com</li>
-                <li>config["phone"]: 123-123-1234</li>
-                <li>config["biography"]: A vivid and succinct description of yourself.
-This biography is so important it spans multiple lines.
-</li>
-                <li>config["role"]: Your job role/title (i.e. CEO)</li>
-                <li>config["company"]: Company name</li>
-                <li>config["address"]: 123 first street SE</li>
-                <li>config["social"]: {&#39;github&#39;: &#39;descent098&#39;, &#39;twitch&#39;: &#39;username&#39;, &#39;youtube&#39;: &#39;/channel/channel-ID or custom_url&#39;, &#39;instagram&#39;: &#39;username&#39;, &#39;twitter&#39;: &#39;handle&#39;, &#39;snapchat&#39;: &#39;username&#39;, &#39;linkedin&#39;: &#39;name&#39;, &#39;facebook&#39;: &#39;your id&#39;, &#39;url&#39;: &#39;https://kieranwood.ca&#39;}
-                    <ul>
-                        <li>config["social"]["github"]: descent098</li>
-                        <li>config["social"]["twitch"]: username</li>
-                        <li>config["social"]["youtube"]: /channel/channel-ID or custom_url</li>
-                        <li>config["social"]["instagram"]: username</li>
-                        <li>config["social"]["twitter"]: handle</li>
-                        <li>config["social"]["snapchat"]: username</li>
-                        <li>config["social"]["linkedin"]: name</li>
-                        <li>config["social"]["facebook"]: your id</li>
-                    </ul>
-                </li>
-                <li>config["examples"]: True</li>
-                <li>config["theme"]: base</li>
-                <li>config["resume"]: False</li>
-                <li>config["ua_code"]: UA-000000-0</li>
-                <li>config["ignore_exif_data"]: False</li>
-            </ul>
-        </ul>
-        <h1> Sections dictionary (gallery removed because image binaries are large)</h1>
-                                <h2>sections['education']</h2>
-            [[defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f75514885e0&gt;,
-              {&#39;current&#39;: &#39;true&#39;,
-               &#39;institution&#39;: &#39;UBC&#39;,
-               &#39;month_ended&#39;: False,
-               &#39;month_started&#39;: False,
-               &#39;title&#39;: &#39;BSc Computer Science&#39;,
-               &#39;year_ended&#39;: False,
-               &#39;year_started&#39;: &#39;2014&#39;}),
-  &#39;&lt;p&gt;This is my current university&lt;/p&gt;&#39;],
- [defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f7551488900&gt;,
-              {&#39;current&#39;: False,
-               &#39;institution&#39;: &#39;MIT&#39;,
-               &#39;month_ended&#39;: False,
-               &#39;month_started&#39;: False,
-               &#39;title&#39;: &#39;MS Computer Science&#39;,
-               &#39;year_ended&#39;: &#39;2016&#39;,
-               &#39;year_started&#39;: &#39;2014&#39;}),
-  &#39;&lt;p&gt;I studied things at MIT&lt;/p&gt;&#39;]]
-                                            <h2>sections['blog']</h2>
-            [[defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f7551488a40&gt;,
-              {&#39;created&#39;: &#39;2022-04-24&#39;,
-               &#39;title&#39;: &#39;Example&#39;,
-               &#39;updated&#39;: &#39;2022-04-24&#39;}),
-  &#39;&lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime &#39;
-  &#39;mollitia, molestiae quas vel sint commodi repudiandae consequuntur &#39;
-  &#39;voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat &#39;
-  &#39;iusto fuga praesentium optio, eaque rerum! Provident similique accusantium &#39;
-  &#39;nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias &#39;
-  &#39;architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! &#39;
-  &#39;Impedit sit sunt quaerat, odit, tenetur error, harum nesciunt ipsum debitis &#39;
-  &#39;quas aliquid.&lt;/p&gt;&#39;,
-  &#39;example.md&#39;]]
-                                            <h2>sections['volunteering_experience']</h2>
-            [[defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f7551488b80&gt;,
-              {&#39;company&#39;: &#39;Canadian Coding&#39;,
-               &#39;current&#39;: &#39;true&#39;,
-               &#39;month_ended&#39;: False,
-               &#39;month_started&#39;: &#39;October&#39;,
-               &#39;role&#39;: &#39;Mentor&#39;,
-               &#39;year_ended&#39;: False,
-               &#39;year_started&#39;: &#39;2019&#39;}),
-  &#39;&lt;p&gt;I volunteer to teach coding&lt;/p&gt;&#39;],
- [defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f7551488c20&gt;,
-              {&#39;company&#39;: &#39;Canadian Coding&#39;,
-               &#39;current&#39;: False,
-               &#39;month_ended&#39;: &#39;October&#39;,
-               &#39;month_started&#39;: &#39;October&#39;,
-               &#39;role&#39;: &#39;Web Developer&#39;,
-               &#39;year_ended&#39;: &#39;2020&#39;,
-               &#39;year_started&#39;: &#39;2017&#39;}),
-  &#39;&lt;p&gt;I do all the web coding&lt;/p&gt;&#39;]]
-                                                                <h2>sections['work_experience']</h2>
-            [[defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f7551489120&gt;,
-              {&#39;company&#39;: &#39;Canadian Coding&#39;,
-               &#39;current&#39;: &#39;true&#39;,
-               &#39;month_ended&#39;: False,
-               &#39;month_started&#39;: &#39;October&#39;,
-               &#39;role&#39;: &#39;CEO&#39;,
-               &#39;year_ended&#39;: False,
-               &#39;year_started&#39;: &#39;2019&#39;}),
-  &#39;&lt;p&gt;This is my current job&lt;/p&gt;&#39;],
- [defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f75514891c0&gt;,
-              {&#39;company&#39;: &#39;Canadian Coding&#39;,
-               &#39;current&#39;: False,
-               &#39;month_ended&#39;: &#39;October&#39;,
-               &#39;month_started&#39;: &#39;October&#39;,
-               &#39;role&#39;: &#39;CTO&#39;,
-               &#39;year_ended&#39;: &#39;2020&#39;,
-               &#39;year_started&#39;: &#39;2017&#39;}),
-  &#39;&lt;p&gt;I do all the technical things&lt;/p&gt;&#39;]]
-                                            <h2>sections['projects']</h2>
-            [[defaultdict(&lt;function Markdown.__metadata__.&lt;locals&gt;.&lt;lambda&gt; at 0x7f75514893a0&gt;,
-              {&#39;image&#39;: &#39;https://raw.githubusercontent.com/Descent098/ezcv/master/.github/logo.png&#39;,
-               &#39;link&#39;: &#39;https://github.com/Descent098/ezcv&#39;,
-               &#39;title&#39;: &#39;EZ-CV&#39;}),
-  &#39;&lt;p&gt;A python-based static site generator for setting up a CV/Resume &#39;
-  &#39;site&lt;/p&gt;&#39;]]
-                            <h1> Generated section HTML </h1>
-        <!-- Projects Section-->
-<h2>Projects</h2>
-<div>
-            <!-- Metadata -->
-        <h4>EZ-CV</h4>
-                                  <img src="https://raw.githubusercontent.com/Descent098/ezcv/master/.github/logo.png" alt="EZ-CV"/>
-                    
-        <!-- Content -->
-        <p><p>A python-based static site generator for setting up a CV/Resume site</p></p>
-    </div>
-<!--End of Projects section-->
-        <!-- Start Education -->
-<h2>Education</h2>
-<div>
-            <h4>UBC  | BSc Computer Science</h4>
-        <!-- Metadata -->
-        <h4>2014 - Present</h4>
-        <!-- Content -->
-        <p><p>This is my current university</p></p>
-            <h4>MIT  | MS Computer Science</h4>
-        <!-- Metadata -->
-        <h4>2014 - 2016</h4>
-        <!-- Content -->
-        <p><p>I studied things at MIT</p></p>
-    </div>
-<!-- End Education -->
-        <!-- Start work_experience -->
-<h2>Work Experience</h2>
-<div>
-            <!-- Metadata -->
-        <h4>Canadian Coding | CEO</h4>
-        <h4> October   2019  - Present   </h4>
-        <!-- Content -->
-        <p><p>This is my current job</p></p>
-            <!-- Metadata -->
-        <h4>Canadian Coding | CTO</h4>
-        <h4> October   2017   -   October   2020 </h4>
-        <!-- Content -->
-        <p><p>I do all the technical things</p></p>
-    </div>
-
-<!-- End work_experience -->
-        <!-- Start volunteering_experience -->
-<h2>Volunteering Experience</h2>
-<div>
-            <!-- Metadata -->
-        <h4>Canadian Coding | Mentor</h4>
-        <h4> October   2019  - Present   </h4>
-        <!-- Content -->
-        <p><p>I volunteer to teach coding</p></p>
-            <!-- Metadata -->
-        <h4>Canadian Coding | Web Developer</h4>
-        <h4> October   2017   -   October   2020 </h4>
-        <!-- Content -->
-        <p><p>I do all the web coding</p></p>
-    </div>
-<!-- End volunteering_experience -->
-        <!-- Start Gallery -->
-<h2>Gallery</h2>
-<div>
-        <h3>Image name: images/gallery/P1112490.jpg</h3>
-
-    <img src="images/gallery/P1112490.jpg" alt="images/gallery/P1112490.jpg">
-            
-        
-                <h3>Image name: images/gallery/P1112566.jpg</h3>
-
-    <img src="images/gallery/P1112566.jpg" alt="images/gallery/P1112566.jpg">
-            
-        
-                <h3>Image name: images/gallery/P1112419.jpg</h3>
-
-    <img src="images/gallery/P1112419.jpg" alt="images/gallery/P1112419.jpg">
-            
-        
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Your Name</span>
+                                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://startbootstrap.github.io/startbootstrap-freelancer/assets/img/avataaars.svg" alt="Your Name" style="min-height: 5em; min-width: 5em;"/></span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
+                                                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                                                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#work-experience">Work Experience</a></li>
+                                                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#volunteering-experience">Volunteering Experience</a></li>
+                                    </ul>
             </div>
-<!--End of Gallery section-->
-        <!-- Start Blog -->
-<h2>Blog</h2>
-<div>
-            <h4> Example</h4>
-        <!-- Metadata -->
-        <p>Created: 2022-04-24</p>
-        <p>updated:2022-04-24</p>
-        <!-- Content -->
-        <p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit, tenetur error, harum nesciunt ipsum debitis quas aliquid.</p></p>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Your Name
+                    </h1>
+                    <div class="subheading mb-5">
+                    Your job role/title (i.e. CEO) &nbsp;&bull;&nbsp; Company name |                          <a href="tel:123-123-1234">123-123-1234</a> |   <a href="mailto:email@example.com">email@example.com</a> |   123 first street SE  
+                    </div>
+                                        <p class="lead mb-5">A vivid and succinct description of yourself.
+This biography is so important it spans multiple lines.
+</p>
+                                        <div class="social-icons">
+                                        <a class="social-icon" href="https://github.com/descent098" target="_blank"><i class="fab fa-github"></i></a>
+                                                            <a class="social-icon" href="https://youtube.com//channel/channel-ID or custom_url" target="_blank"><i class="fab fa-youtube"></i></a>
+                                                            <a class="social-icon" href="https://twitch.tv/username" target="_blank"><i class="fab fa-twitch"></i></a>
+                                                            <a class="social-icon" href="https://twitter.com/handle" target="_blank"><i class="fab fa-twitter"></i></a>
+                                                            <a class="social-icon" href="https://www.instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+                                                            <a class="social-icon" href="https://www.facebook.com/your id" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                                            <a class="social-icon" href="https://www.linkedin.com/in/name" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                         
+                    <a class="social-icon" href="https://snapchat.com/add/username" target="_blank"><i class="fab fa-snapchat"></i></a>
+                                        </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+<section class="resume-section" id="projects">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Projects</h2>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">EZ-CV</h3>
+                <div class="subheading mb-3">EZ-CV</div>
+                <p>A python-based static site generator for setting up a CV/Resume site</p>
+
+                                
+                            </div>
+        </div>
+            </div>
+</section>
+            <hr class="m-0" />
+            <!-- Education-->
+<section class="resume-section" id="education">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Education</h2>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">UBC </h3>
+                <div class="subheading mb-3"> BSc Computer Science</div>
+                <div><p>This is my current university</p></div>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">2014 - Present</span></div>
+        </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">MIT </h3>
+                <div class="subheading mb-3"> MS Computer Science</div>
+                <div><p>I studied things at MIT</p></div>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">2014 - 2016</span></div>
+        </div>
+
+        
+
     </div>
-<!-- End Blog -->
-        <!-- Publications --> <!-- volunteering_experience_html | safe -->
+</section>
+            <hr class="m-0" />
+            <!-- Experience-->
+<section class="resume-section" id="work-experience">
+
+    <div class="resume-section-content">
+        <h2 class="mb-5">Work Experience</h2>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">CEO</h3>
+                <div class="subheading mb-3">Canadian Coding</div>
+                <p><p>This is my current job</p></p>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">October 2019 - Present</span></div>
+        </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">CTO</h3>
+                <div class="subheading mb-3">Canadian Coding</div>
+                <p><p>I do all the technical things</p></p>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">October 2017 - October 2020</span></div>
+        </div>
+        
+
+    </div>
+</section>
+            <hr class="m-0" />
+            <!-- Experience-->
+<section class="resume-section" id="volunteering-experience">
+
+    <div class="resume-section-content">
+        <h2 class="mb-5">Volunteering Experience</h2>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">Mentor</h3>
+                <div class="subheading mb-3">Canadian Coding</div>
+                <p><p>I volunteer to teach coding</p></p>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">October 2019 - Present</span></div>
+        </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">Web Developer</h3>
+                <div class="subheading mb-3">Canadian Coding</div>
+                <p><p>I do all the web coding</p></p>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">October 2017 - October 2020</span></div>
+        </div>
+        
+
+    </div>
+</section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
     </body>
 </html>
