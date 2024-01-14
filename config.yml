@@ -17,7 +17,7 @@ social:
 #  instagram: username # Your username
 #  twitter: handle # Your handle (without the @)
 #  snapchat: username # Username others use to add you
-  linkedin: name # go to linkedin and go to your profile, your name will be at the end of the url i.e. www.linkedin.com/in/<name>
+  linkedin: maxim-chernousov # go to linkedin and go to your profile, your name will be at the end of the url i.e. www.linkedin.com/in/<name>
 #  facebook: your id # go to facebook and go to your profile, your ID will be at the end of the url i.e. www.facebook.com/<your id>
   url: https://kieranwood.ca # The URL the site will be hosted on (used by resume)
 examples: true # If you want to include the example.md files in your final build (good for developing new themes)
