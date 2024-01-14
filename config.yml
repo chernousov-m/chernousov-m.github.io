@@ -11,14 +11,14 @@ role: Your job role/title (i.e. CEO)
 company: Company name
 address: 123 first street SE
 social:
-  github: descent098 # Your username on github 
-  twitch: username # Your username on twitch (everything after https://twitch.tv) i.e. https://twitch.tv/canadiancoding would be canadiancoding
-  youtube: /channel/channel-ID or custom_url # Your custom url (i.e. https://youtube.com/mkbhd would be just mkbhd) or see this guide to find your channel ID: https://support.google.com/youtube/answer/3250431?hl=en
-  instagram: username # Your username
-  twitter: handle # Your handle (without the @)
-  snapchat: username # Username others use to add you
+  github: chernousov-m # Your username on github 
+#  twitch: username # Your username on twitch (everything after https://twitch.tv) i.e. https://twitch.tv/canadiancoding would be canadiancoding
+#  youtube: /channel/channel-ID or custom_url # Your custom url (i.e. https://youtube.com/mkbhd would be just mkbhd) or see this guide to find your channel ID: https://support.google.com/youtube/answer/3250431?hl=en
+#  instagram: username # Your username
+#  twitter: handle # Your handle (without the @)
+#  snapchat: username # Username others use to add you
   linkedin: name # go to linkedin and go to your profile, your name will be at the end of the url i.e. www.linkedin.com/in/<name>
-  facebook: your id # go to facebook and go to your profile, your ID will be at the end of the url i.e. www.facebook.com/<your id>
+#  facebook: your id # go to facebook and go to your profile, your ID will be at the end of the url i.e. www.facebook.com/<your id>
   url: https://kieranwood.ca # The URL the site will be hosted on (used by resume)
 examples: true # If you want to include the example.md files in your final build (good for developing new themes)
 theme: CV # The theme you want to use for your site
