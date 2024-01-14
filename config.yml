@@ -1,0 +1,27 @@
+# Different themes have different required and optional fields, look at the documentation for your intended theme to see which you need and/or are available
+name: Your Name
+background: https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80 # An image to use as a background for the site
+avatar: https://startbootstrap.github.io/startbootstrap-freelancer/assets/img/avataaars.svg # The avatar/profile picture of the person's site (put image in images folder and then just the image name here)
+email: email@example.com
+phone: 123-123-1234
+biography: | # The '|' Used to allow the description to go across multiple lines
+  A vivid and succinct description of yourself.
+  This biography is so important it spans multiple lines.
+role: Your job role/title (i.e. CEO)
+company: Company name
+address: 123 first street SE
+social:
+  github: descent098 # Your username on github 
+  twitch: username # Your username on twitch (everything after https://twitch.tv) i.e. https://twitch.tv/canadiancoding would be canadiancoding
+  youtube: /channel/channel-ID or custom_url # Your custom url (i.e. https://youtube.com/mkbhd would be just mkbhd) or see this guide to find your channel ID: https://support.google.com/youtube/answer/3250431?hl=en
+  instagram: username # Your username
+  twitter: handle # Your handle (without the @)
+  snapchat: username # Username others use to add you
+  linkedin: name # go to linkedin and go to your profile, your name will be at the end of the url i.e. www.linkedin.com/in/<name>
+  facebook: your id # go to facebook and go to your profile, your ID will be at the end of the url i.e. www.facebook.com/<your id>
+  url: https://kieranwood.ca # The URL the site will be hosted on (used by resume)
+examples: true # If you want to include the example.md files in your final build (good for developing new themes)
+theme: base # The theme you want to use for your site
+ua_code: UA-000000-0 # The UA code for google analytics
+resume: false # Whether to generate the resume page or not
+ignore_exif_data : false # Whether to ignore exif data for gallery images
