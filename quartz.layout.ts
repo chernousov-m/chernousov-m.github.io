@@ -1,11 +1,25 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import CustomFooter from './quartz/components/CustomFooter'
+import Links from "./quartz/components/Links"
+import HideSomething from "./quartz/components/HideSomething"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [
+    Links({
+      links: [
+        { url: "/", title: 'Blog'}
+      ]
+    }),
+    Links({
+      links: [
+        { url: "/notes", title: 'Notes'}
+      ]
+    }),
+    Component.Search()
+  ],
   footer: CustomFooter({
     links: {
       GitHub: "https://github.com/chernousov-m"
@@ -15,7 +29,12 @@ export const sharedPageComponents: SharedLayout = {
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [],
+  beforeBody: [
+    HideSomething({
+      key: 'content-meta',
+      component: Component.ContentMeta({showReadingTime: false})
+    }),
+  ],
   left: [],
   right: [],
 }

@@ -1,7 +1,9 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import style from "./styles/footer.scss"
+import hljsscript from "./scripts/hljs.inline"
 import { version } from "../../package.json"
 import { i18n } from "../i18n"
+import hljs from "highlight.js"
 
 interface Options {
   links: Record<string, string>
@@ -29,5 +31,6 @@ export default ((opts?: Options) => {
   }
 
   CustomFooter.css = style
+  CustomFooter.beforeDOMLoaded = hljsscript
   return CustomFooter
 }) satisfies QuartzComponentConstructor

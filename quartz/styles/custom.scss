@@ -1,3 +1,177 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+body {
+    background-color: rgb(41, 42, 47);
+    font-size: larger;
+    font-weight: bolder;
+    font-family: monospace;
+    tab-size: 4;
+}
+
+p,
+ul,
+text,
+a,
+tr,
+td,
+li,
+ol,
+ul,
+.katex,
+.math {
+    line-height: 2;
+    color: rgba($color: white, $alpha: 0.85);
+}
+
+.text-highlight {
+    background-color: rgb(254, 251, 83);
+    color: black;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.callout {
+    &[data-callout="bug"] {
+        --color: rgb(218, 60, 65);
+        --border: rgb(218, 60, 65);
+        --bg: rgb(124, 61, 56);
+        --callout-icon: url(http://localhost:8080/assets/xmark.svg);
+    }
+}
+
+.callout-title {
+    height: 13px;
+    line-height: 13px;
+
+    .callout-icon,
+    & .fold-callout-icon {
+      width: 13px;
+      height: 13px;
+    //   flex: 0 0 13px;
+  
+      // icon support
+      background-image: var(--callout-icon);
+      background-size: 13px 13px;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 0.2rem 0;
+    }
+  }
+  
+
+// .text-highlight::after {
+//     content: " ";
+// }
+
+::selection {
+    background-color: rgb(102, 110, 129);
+}
+
+a {
+    transition: color 0.2s ease;
+    color: rgb(113, 152, 248);
+  
+    &:hover {
+        color: rgb(113, 152, 248) !important;
+        text-decoration: underline;
+    }
+
+    &.internal {
+        //   text-decoration: underline;
+        background-color: rgb(41, 42, 47) !important;
+        padding: 0 0.1rem;
+        line-height: 1.4rem;
+    
+        &:has(> img) {
+            background-color: none;
+            border-radius: 0;
+            padding: 0;
+        }
+    
+        &.tag-link {
+            &::before {
+                content: "#";
+            }
+        }
+    }
+
+    &.external .external-icon {
+      height: 1ex;
+      margin: 0 0.15em;
+  
+      > path {
+        fill: rgb(113, 152, 248);
+      }
+    }
+}
+pre {
+    font-family: monospace;
+    font-weight: bolder !important;
+    padding: 0.5rem;
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+
+    &>button {
+        display: none !important;
+    }
+
+    &:has(> code.mermaid) {
+        border: none;
+    }
+
+    &>code {
+        color: rgba($color: white, $alpha: 0.85);
+        line-height: 1.4;
+        background: none;
+        padding: 0;
+        font-size: medium;
+        counter-reset: line;
+        counter-increment: line 0;
+        display: block;
+        padding: 0.5rem 0;
+        overflow-x: auto;
+        border-width: 200;
+    }
+}
+
+code:not(.hljs) {
+    background-color: rgb(78, 84, 100);
+}
+
+.hljs-keyword {
+    color: rgb(238, 130, 178);
+}
+
+.hljs-title {
+    color: rgb(105, 174, 201);
+}
+
+.hljs-type {
+    color: rgb(213, 187, 250);
+}
+
+.hljs-number {
+    color: rgb(215, 200, 134);
+}
+
+.hljs-comment {
+    color: rgb(130, 139, 151);
+}
+
+.hljs-menu-token {
+    color: white;
+    background-color: rgb(52, 120, 246);
+    padding: 0 2px;
+    border-radius: 4px;
+}
+
+.hljs-highlight {
+    color: black;
+    background-color: rgb(254, 251, 83);
+    padding: 0 2px;
+    border-radius: 4px;
+}
+// 213, 187, 250

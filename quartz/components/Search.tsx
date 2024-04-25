@@ -16,11 +16,11 @@ const defaultOptions: SearchOptions = {
 export default ((userOpts?: Partial<SearchOptions>) => {
   const Search: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const opts = { ...defaultOptions, ...userOpts }
-    const searchPlaceholder = i18n(cfg.locale).components.search.searchBarPlaceholder
+    const searchPlaceholder = "Open Quickly"
     return (
       <div class={classNames(displayClass, "search")}>
         <div id="search-icon">
-          <p>{i18n(cfg.locale).components.search.title}</p>
+          <p>Search</p>
           <div></div>
           <svg
             tabIndex={0}
