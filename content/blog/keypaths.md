@@ -3,6 +3,7 @@ title: The hidden (in plain sight) power of KeyPaths
 date: 2024-04-22
 aliases:
   - The hidden (in plain sight) power of KeyPaths
+description: KeyPaths - they're everywhere nowadays. Let's explore how we can design better APIs with them and have some fun along the way.
 ---
 # The hidden (in plain sight) power of `KeyPath`s
 `KeyPath`s - they're everywhere nowadays. Let's explore how we can design better APIs with them and have some fun along the way.
