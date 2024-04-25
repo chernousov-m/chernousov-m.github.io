@@ -70,7 +70,7 @@ struct Lens<Root, Value> {
 	let set: (Root, Value) -> Root
 }
 ```
-A lens in our case is a simple struct that has two functions: one for getting `Value` out of `Root` type and another for setting it (though because of immutability, it returns a new instance of `Root`). Now we can define a lens for getting and setting the `x` value of our `Player`'s `location`:
+A lens in our case is a simple struct that has two closures: one for getting the `Value` out of the `Root` type and another for setting it (though because of immutability, it returns a new instance of `Root`). Now we can define a lens for getting and setting the `x` value of our `Player`'s `location`:
 ```swift
 let locationXLens = Lens<Player, Double>(
 	get: {
