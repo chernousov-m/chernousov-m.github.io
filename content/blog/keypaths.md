@@ -268,7 +268,7 @@ The `@dynamicMemberLookup` attribute on protocols is (as expected) inherited by 
 ```swift
 public struct Dependencies {
 	@TaskLocal
-	 static var current: Dependencies = .init(
+	static var current: Dependencies = .init(
 		logger: .shared,
 		analytics: .shared
 	)
@@ -358,7 +358,7 @@ func transform(userToken: ImageToken) -> ImageToken {
 	)
 }
 ```
-And latter for the external APIs (especially the ones that accept more than one parameter) as it looks more like a function call and hence reads easier at the call site:
+And the latter for the external APIs (especially the ones that accept more than one parameter) as it looks more like a function call and hence reads easier at the call site:
 ```swift
 var body: some View {
 	Icon(\.info.combined[with: .triangle].mode[.fill])
