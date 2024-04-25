@@ -4,11 +4,11 @@ date: 2024-04-22
 aliases:
   - The hidden (in plain sight) power of KeyPaths
 ---
-# The hidden (in plain sight) power of KeyPaths
-KeyPaths - they're everywhere nowadays. Let's explore how we can design better APIs with them and have some fun along the way.
+# The hidden (in plain sight) power of `KeyPath`s
+`KeyPath`s - they're everywhere nowadays. Let's explore how we can design better APIs with them and have some fun along the way.
 
 # Lenses
-Before we begin exploring KeyPaths in the wild, let us start with a little history overview and take a look at their ancestors, Lenses - which came to our world (as many other really useful things) from functional programming. 
+Before we begin exploring `KeyPath`s in the wild, let us start with a little history overview and take a look at their ancestors, Lenses - which came to our world (as many other really useful things) from functional programming. 
 I won't give any Haskell (or other functional language) code for the examples, mainly because I can't really read it, but Swift is more than enough to follow the concept. 
 As you might already know, all the data in functional programming is basically immutable. We won't dive into how that works and how to manage state (e.g., a bank account), but we need to set the constraint to our code examples in order to understand the very purpose of lenses. So let's assume that we cannot create mutable properties, and all of them are `let`s. 
 Suppose we're writing a simple game engine:
@@ -153,10 +153,10 @@ let newPlayer = locationXLens.set(
 	locationXLens.get(player) + 1
 ) // a player whose location's x value is incremented by 1
 ```
-Now that we have a basic overview of lenses - let's explore what the KeyPaths are.
+Now that we have a basic overview of lenses - let's explore what the `KeyPath`s are.
 
-# KeyPaths
-In Swift, KeyPaths are basically Lenses (but some of them are read-only) with a significantly better API for a language that supports mutation. They are also parametrized types with `Root` and `Value` parameters that allow us to read (or write) `Value`s of the `Root` type:
+# `KeyPath`s
+In Swift, `KeyPath`s are basically Lenses (but some of them are read-only) with a significantly better API for a language that supports mutation. They are also parametrized types with `Root` and `Value` parameters that allow us to read (or write) `Value`s of the `Root` type:
 ```swift
 public class KeyPath<Root, Value>: PartialKeyPath<Root> {}
 ```
@@ -189,15 +189,15 @@ func setDouble<Root>(
 As you've seen already, `KeyPath`s are classes, and there is inheritance involved. 
 The classes form the following type tree: `AnyKeyPath -> PartialKeyPath<Root> -> KeyPath<Root, Value> -> WritableKeyPath<Root, Value> -> ReferenceWritableKeyPath<Root, Value>`
 Here is the overview of what they are and what they are useful for:
- - `AnyKeyPath` is the root base class for all the `*KeyPath` types. Conforms to `Hashable`, so the other types are `Hashable` as well, which means they can be used as a `Key` in dictionaries. As the name implies - it is a type-erased version of KeyPath.
+ - `AnyKeyPath` is the root base class for all the `*KeyPath` types. Conforms to `Hashable`, so the other types are `Hashable` as well, which means they can be used as a `Key` in dictionaries. As the name implies - it is a type-erased version of `KeyPath`.
 - `PartialKeyPath<Root>`  is another type-erased version of `KeyPath`, but this time only the `Value` type is erased. We can't use it on any type other than `Root`, but we always get `Any` as the return value of the `KeyPath`-based subscript.
 - `KeyPath<Root, Value>` - is the most commonly used version of them all. It has both `Root` and `Value` types and it can be used to read the value from the `Root`.
 - `WritableKeyPath<Root, Value>` is, as the name implies, a version of `KeyPath` that allows us to write properties and not only read them.
 - `ReferenceWritableKeyPath<Root, Value>` is the version that allows mutating properties without mutating the object itself (reference semantics). Most of the time, these are `KeyPath`s to class member properties, but `nonmutating set` also counts for these `KeyPath`s.
 ## The cool things about `KeyPath`s
 
-### 1. KeyPath literal to function conversion
-KeyPath literals can be converted to functions that have the following signature:
+### 1. `KeyPath` literal to function conversion
+`KeyPath` literals can be converted to functions that have the following signature:
 ```swift
 (Root) -> Value
 ```
@@ -392,5 +392,5 @@ struct MyView: View {
 ```
 Rarely are we going to need it, but sometimes it's really useful. You'll see the concrete use case for this in the next article.
 # Conclusion
-`KeyPath`s are essential tools for crafting modern APIs. They simplify data manipulation tasks and seamlessly integrate with Swift. KeyPaths offer versatility and efficiency, allowing for cleaner code and improving overall development. With KeyPaths, you can create better APIs and streamline your coding process. 
+`KeyPath`s are essential tools for crafting modern APIs. They simplify data manipulation tasks and seamlessly integrate with Swift. `KeyPath`s offer versatility and efficiency, allowing for cleaner code and improving overall development. With `KeyPath`s, you can create better APIs and streamline your coding process. 
 See you in the [[styling|next article]].
