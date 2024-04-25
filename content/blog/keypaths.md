@@ -71,7 +71,7 @@ struct Lens<Root, Value> {
 ```
 A lens in our case is a simple struct that has two functions: one for getting `Value` out of `Root` type and another for setting it (though because of immutability, it returns a new instance of `Root`). Now we can define a lens for getting and setting the `x` value of our `Player`'s `location`:
 ```swift
-let locationXLense = Lens<Player, Double>(
+let locationXLens = Lens<Player, Double>(
 	get: {
 		$0.location.x
 	},
@@ -90,9 +90,9 @@ let locationXLense = Lens<Player, Double>(
 func getNewState(player: Player, event: Event) -> Player {
 	switch event {
 		case .left:
-			locationXLens.set(player, locationXLense.get(player) - 1)
+			locationXLens.set(player, locationXLens.get(player) - 1)
 		case .right:
-			locationXLens.set(player, locationXLense.get(player) + 1)
+			locationXLens.set(player, locationXLens.get(player) + 1)
 	}
 } 
 ```
@@ -135,14 +135,14 @@ let cameraLens = Lens<Player, Vector>(
 	}
 )
 
-let xLense = Lens<Vector, Double>(
+let xLens = Lens<Vector, Double>(
 	get: { $0.x },
 	set: { vector, x in
 		Vector(x: x, y: vector.y, z: vector.z)
 	}
 )
 
-// Compose lenses to get location.x lense and camera.x lense
+// Compose lenses to get location.x lens and camera.x lens
 
 let cameraXLens = cameraLens.compose(with: xLens)
 let locationXLens = locationLens.compose(with: xLens)
