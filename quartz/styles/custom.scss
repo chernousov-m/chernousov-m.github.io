@@ -3,6 +3,11 @@
 
 // put your custom CSS here!
 
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('assets/menlo.ttf');
+  }
+
 body {
     background-color: rgb(41, 42, 47);
     font-size: larger;
