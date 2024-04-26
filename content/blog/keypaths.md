@@ -8,7 +8,7 @@ description: KeyPaths - they're everywhere nowadays. Let's explore how we can de
 # The hidden (in plain sight) power of `KeyPath`s
 `KeyPath`s - they're everywhere nowadays. Let's explore how we can design better APIs with them and have some fun along the way.
 
-# Lensesg
+# Lenses
 Before we begin exploring `KeyPath`s in the wild, let us start with a little history overview and take a look at their ancestors, Lenses - which came to our world (as many other really useful things) from functional programming. 
 I won't give any Haskell (or other functional language) code for the examples, mainly because I can't really read it, but Swift is more than enough to follow the concept. 
 As you might already know, all the data in functional programming is basically immutable. We won't dive into how that works and how to manage state (e.g., a bank account), but we need to set the constraint to our code examples in order to understand the very purpose of lenses. So let's assume that we cannot create mutable properties, and all of them are `let`s. 
@@ -66,8 +66,8 @@ func getNewState(player: Player, event: Event) -> Player {
 It seems like too much code for a simple property change. And now the concept of lenses arrives. Lenses are just getters and setters; we can implement them ourselves:
 ```swift
 struct Lens<Root, Value> {
-	let get: (Root) -> Value
-	let set: (Root, Value) -> Root
+	let /*@START_NOT_KEYWORD@*/get/*@END_NOT_KEYWORD@*/: (Root) -> Value
+	let /*@START_NOT_KEYWORD@*/set/*@END_NOT_KEYWORD@*/: (Root, Value) -> Root
 }
 ```
 A lens in our case is a simple struct that has two closures: one for getting the `Value` out of the `Root` type and another for setting it (though because of immutability, it returns a new instance of `Root`). Now we can define a lens for getting and setting the `x` value of our `Player`'s `location`:

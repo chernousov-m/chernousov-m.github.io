@@ -18,6 +18,7 @@ export const HLJSSyntaxHighlighting: QuartzTransformerPlugin<undefined> = () => 
     var directives = [
       directive('menu-token'),
       directive('highlight'),
+      directive('not-keyword'),
     ]
     return {
       name: current.name,
