@@ -121,11 +121,11 @@
 .callout-title {
   display: flex;
   align-items: flex-start;
-  gap: 5px;
+  gap: 1rem;
   padding: 1rem 0;
   color: var(--color);
 
-  --icon-size: 18px;
+  --icon-size: 1rem;
 
   & .fold-callout-icon {
     transition: transform 0.15s ease;
@@ -139,22 +139,20 @@
     margin: 0;
   }
 
-  // .callout-icon,
-  // & .fold-callout-icon {
-  //   width: var(--icon-size);
-  //   height: var(--icon-size);
-  //   flex: 0 0 var(--icon-size);
+  .callout-icon,
+  & .fold-callout-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    flex: 0 0 var(--icon-size);
 
-  //   // icon support
-  //   background-size: var(--icon-size) var(--icon-size);
-  //   background-position: center;
-  //   background-color: var(--color);
-  //   mask-image: var(--callout-icon);
-  //   mask-size: var(--icon-size) var(--icon-size);
-  //   mask-position: center;
-  //   mask-repeat: no-repeat;
-  //   padding: 0.2rem 0;
-  // }
+    // icon support
+    background-image: var(--callout-icon);
+    background-size: var(--icon-size) var(--icon-size);
+    background-repeat: no-repeat;
+    background-position: center;
+    // background-color: var(--color);
+    padding: 0.2rem 0;
+  }
 
   .callout-title-inner {
     font-weight: $semiBoldWeight;

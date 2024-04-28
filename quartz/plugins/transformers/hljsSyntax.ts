@@ -14,11 +14,16 @@ export const HLJSSyntaxHighlighting: QuartzTransformerPlugin<undefined> = () => 
         begin: RegExp("\\/\\*@START_" + token + "@\\*\\/"),
         end: RegExp("\\/\\*@END_" + token + "@\\*\\/"),
       }
-    }
+    }    
     var directives = [
       directive('menu-token'),
       directive('highlight'),
       directive('not-keyword'),
+    ]
+    
+    var contains: (Mode | 'self')[] = [
+      ...directives,
+      ...current.contains.map((mode) => { return add(directives, mode, 0) }),
     ]
     return {
       name: current.name,
@@ -27,8 +32,7 @@ export const HLJSSyntaxHighlighting: QuartzTransformerPlugin<undefined> = () => 
       aliases: current.aliases,
       disableAutodetect: current.disableAutodetect,
       contains: [
-        ...directives,
-        ...current.contains.map((mode) => { return add(directives, mode, 0) }),
+        ...contains,
       ],
       case_insensitive: current.case_insensitive,
       keywords: current.keywords,

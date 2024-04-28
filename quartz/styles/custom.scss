@@ -16,7 +16,11 @@ body {
     tab-size: 4;
 }
 
-p,
+p {
+    line-height: 2rem;
+}
+
+p
 ul,
 text,
 a,
@@ -27,7 +31,7 @@ ol,
 ul,
 .katex,
 .math {
-    line-height: 2;
+    line-height: 2 !important;
     color: rgba($color: white, $alpha: 0.85);
 }
 
@@ -37,35 +41,7 @@ ul,
     padding: 0 4px;
     border-radius: 4px;
 }
-
-.callout {
-    &[data-callout="bug"] {
-        --color: rgb(218, 60, 65);
-        --border: rgb(218, 60, 65);
-        --bg: rgb(124, 61, 56);
-        --callout-icon: url(http://localhost:8080/assets/xmark.svg);
-    }
-}
-
-.callout-title {
-    height: 13px;
-    line-height: 13px;
-
-    .callout-icon,
-    & .fold-callout-icon {
-      width: 13px;
-      height: 13px;
-    //   flex: 0 0 13px;
-  
-      // icon support
-      background-image: var(--callout-icon);
-      background-size: 13px 13px;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 0.2rem 0;
-    }
-  }
-  
+ 
 
 // .text-highlight::after {
 //     content: " ";
@@ -142,6 +118,8 @@ pre {
     }
 }
 
+// HLJS
+
 code:not(.hljs) {
     background-color: rgb(78, 84, 100);
 }
@@ -179,4 +157,153 @@ code:not(.hljs) {
     padding: 0 2px;
     border-radius: 4px;
 }
-// 213, 187, 250
+
+.hljs-line-highlight {
+    background-color: rgb(48, 50, 56);
+    box-shadow: 0 0 0 100vmax rgb(48, 50, 56);
+    clip-path: inset(0 -100vmax);
+}
+
+.hljs-line-highlight-addition {
+    background-color: rgba(24, 38, 31, 0.5);
+    box-shadow: 0 0 0 100vmax rgba(24, 38, 31, 0.5);
+    clip-path: inset(0 -100vmax);
+}
+
+.hljs-line-highlight-deletion {
+    background-color: rgba(46, 28, 31, 0.5);
+    box-shadow: 0 0 0 100vmax rgba(46, 28, 31, 0.5);
+    clip-path: inset(0 -100vmax);
+}
+
+.hljs-meta {
+    color: rgb(213, 187, 251);
+}
+
+// Callouts
+
+.callout {
+    p {
+        line-height: 1.3rem;
+    }
+    --callout-icon-failure: url('/assets/compiler-error.png');
+    --icon-size: 1rem;
+    padding: 0;
+    border: 0;
+    
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    .callout-title {
+        gap: 7px;
+        padding: 0;
+        background-color: rgb(124, 61, 58);
+    }
+
+    .callout-title-inner {
+        padding: 3px 0;
+        vertical-align: middle;
+    }
+
+    .callout-icon {
+        width: var(--icon-size);
+        height: var(--icon-size);
+        flex: 0 0 var(--icon-size);
+        border-right: 1px solid rgb(41, 42, 47);
+        // icon support
+        background-image: var(--callout-icon);
+        background-size: var(--icon-size) var(--icon-size);
+        background-color: var(--bg);
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: calc(3px + 0.15rem) 7px;
+    }
+
+    &[data-callout] {
+        --color: #448aff;
+        --border: #448aff44;
+        --bg: #448aff10;
+        --callout-icon: var(--callout-icon-note);
+    }
+    
+    &[data-callout="abstract"] {
+        --color: #00b0ff;
+        --border: #00b0ff44;
+        --bg: #00b0ff10;
+        --callout-icon: var(--callout-icon-abstract);
+    }
+    
+    &[data-callout="info"],
+    &[data-callout="todo"] {
+        --color: #00b8d4;
+        --border: #00b8d444;
+        --bg: #00b8d410;
+        --callout-icon: var(--callout-icon-info);
+    }
+    
+    &[data-callout="todo"] {
+        --callout-icon: var(--callout-icon-todo);
+    }
+    
+    &[data-callout="tip"] {
+        --color: #00bfa5;
+        --border: #00bfa544;
+        --bg: #00bfa510;
+        --callout-icon: var(--callout-icon-tip);
+    }
+    
+    &[data-callout="success"] {
+        --color: #09ad7a;
+        --border: #09ad7144;
+        --bg: #09ad7110;
+        --callout-icon: var(--callout-icon-success);
+    }
+    
+    &[data-callout="question"] {
+        --color: #dba642;
+        --border: #dba64244;
+        --bg: #dba64210;
+        --callout-icon: var(--callout-icon-question);
+    }
+    
+    &[data-callout="warning"] {
+        --color: #db8942;
+        --border: #db894244;
+        --bg: #db894210;
+        --callout-icon: var(--callout-icon-warning);
+    }
+    
+    &[data-callout="failure"],
+    &[data-callout="danger"],
+    &[data-callout="bug"] {
+        --color: rgb(235, 225, 225);
+        --border: rgb(41, 42, 47);
+        --bg: rgb(124, 61, 58);
+        --callout-icon: var(--callout-icon-failure);
+    }
+    
+    &[data-callout="bug"] {
+        --callout-icon: var(--callout-icon-bug);
+    }
+    
+    &[data-callout="danger"] {
+        --callout-icon: var(--callout-icon-danger);
+    }
+    
+    &[data-callout="example"] {
+        --color: #7a43b5;
+        --border: #7a43b544;
+        --bg: #7a43b510;
+        --callout-icon: var(--callout-icon-example);
+    }
+    
+    &[data-callout="quote"] {
+        --color: var(--secondary);
+        --border: var(--lightgray);
+        --callout-icon: var(--callout-icon-quote);
+    }
+}
+
+// 124, 61, 56

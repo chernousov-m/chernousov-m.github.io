@@ -394,4 +394,4 @@ struct MyView: View {
 Rarely are we going to need it, but sometimes it's really useful. You'll see the concrete use case for this in the next article.
 # Conclusion
 `KeyPath`s are essential tools for crafting modern APIs. They simplify data manipulation tasks and seamlessly integrate with Swift. `KeyPath`s offer versatility and efficiency, allowing for cleaner code and improving overall development. With `KeyPath`s, you can create better APIs and streamline your coding process. 
-See you in the [[styling|next article]].
+See you in the [[blog/styling|next article]].
