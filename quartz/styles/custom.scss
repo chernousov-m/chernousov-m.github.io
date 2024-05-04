@@ -182,12 +182,57 @@ code:not(.hljs) {
 
 // Callouts
 
+.callout:has(>p) {
+    display: flex;
+    // align-items: stretch;
+    // box-sizing: content-box;
+}
+
+.callout:has(>p)::before {
+    display: flex;
+    content: " ";
+    white-space: pre;
+    flex-basis: calc(1rem + 14px);
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-image: var(--callout-icon);
+    background-size: var(--icon-size) var(--icon-size);
+    background-color: var(--bg);
+    background-position: top calc(0.15rem + 3px) center;
+    background-repeat: no-repeat;
+}
+
+.callout:has(>p)::after {
+    content: ' ';
+    white-space: pre;
+    flex-grow: 1;
+    background-color: var(--exp-bg);
+    background-position: top calc(0.15rem + 3px) center;
+    background-repeat: no-repeat;
+}
+
 .callout {
     p {
         line-height: 1.3rem;
     }
-    --callout-icon-failure: url('/assets/compiler-error.png');
-    --icon-size: 1rem;
+    >p {
+        // display: table;
+        background-color: var(--exp-bg);
+        background-repeat: repeat-x;
+        margin-bottom: 0;
+        line-height: calc(1.3rem + 6px);
+        padding-left: 7px;
+    }
+
+    a {
+        &.internal {
+            background-color: var(--exp-bg) !important;
+        }
+    }
+
+    --callout-icon-danger: url('/assets/compiler-error.png');
+    --callout-icon-bug: url('/assets/runtime-warning.png');
+    --callout-icon-warning: url('/assets/warning.png');
     padding: 0;
     border: 0;
     
@@ -196,114 +241,55 @@ code:not(.hljs) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    .callout-title {
-        gap: 7px;
-        padding: 0;
-        background-color: rgb(124, 61, 58);
-    }
-
-    .callout-title-inner {
-        padding: 3px 0;
-        vertical-align: middle;
-    }
-
-    .callout-icon {
-        width: var(--icon-size);
-        height: var(--icon-size);
-        flex: 0 0 var(--icon-size);
-        border-right: 1px solid rgb(41, 42, 47);
-        // icon support
-        background-image: var(--callout-icon);
-        background-size: var(--icon-size) var(--icon-size);
-        background-color: var(--bg);
-        background-repeat: no-repeat;
-        background-position: center;
-        padding: calc(3px + 0.15rem) 7px;
+    &[data-callout="danger"], &[data-callout="warning"], &[data-callout="bug"] {
+        .callout-title {
+            display: none;
+        }
     }
 
     &[data-callout] {
-        --color: #448aff;
-        --border: #448aff44;
-        --bg: #448aff10;
-        --callout-icon: var(--callout-icon-note);
+        --icon-size: 1rem
     }
-    
-    &[data-callout="abstract"] {
-        --color: #00b0ff;
-        --border: #00b0ff44;
-        --bg: #00b0ff10;
-        --callout-icon: var(--callout-icon-abstract);
-    }
-    
-    &[data-callout="info"],
-    &[data-callout="todo"] {
-        --color: #00b8d4;
-        --border: #00b8d444;
-        --bg: #00b8d410;
-        --callout-icon: var(--callout-icon-info);
-    }
-    
-    &[data-callout="todo"] {
-        --callout-icon: var(--callout-icon-todo);
-    }
-    
-    &[data-callout="tip"] {
-        --color: #00bfa5;
-        --border: #00bfa544;
-        --bg: #00bfa510;
-        --callout-icon: var(--callout-icon-tip);
-    }
-    
-    &[data-callout="success"] {
-        --color: #09ad7a;
-        --border: #09ad7144;
-        --bg: #09ad7110;
-        --callout-icon: var(--callout-icon-success);
-    }
-    
-    &[data-callout="question"] {
-        --color: #dba642;
-        --border: #dba64244;
-        --bg: #dba64210;
-        --callout-icon: var(--callout-icon-question);
-    }
-    
+
     &[data-callout="warning"] {
-        --color: #db8942;
-        --border: #db894244;
-        --bg: #db894210;
+        --color: rgb(235, 225, 225);
+        --border: rgb(41, 42, 47);
+        --bg: rgb(140, 125, 54);
+        --exp-bg: rgb(62, 59, 47);
         --callout-icon: var(--callout-icon-warning);
     }
     
-    &[data-callout="failure"],
-    &[data-callout="danger"],
-    &[data-callout="bug"] {
+    &[data-callout="danger"] {
         --color: rgb(235, 225, 225);
         --border: rgb(41, 42, 47);
         --bg: rgb(124, 61, 58);
-        --callout-icon: var(--callout-icon-failure);
-    }
-    
-    &[data-callout="bug"] {
-        --callout-icon: var(--callout-icon-bug);
-    }
-    
-    &[data-callout="danger"] {
+        --exp-bg: rgb(59, 47, 47);
         --callout-icon: var(--callout-icon-danger);
     }
-    
-    &[data-callout="example"] {
-        --color: #7a43b5;
-        --border: #7a43b544;
-        --bg: #7a43b510;
-        --callout-icon: var(--callout-icon-example);
-    }
-    
-    &[data-callout="quote"] {
-        --color: var(--secondary);
-        --border: var(--lightgray);
-        --callout-icon: var(--callout-icon-quote);
+
+    &[data-callout="bug"] {
+        --color: rgb(235, 225, 225);
+        --border: rgb(41, 42, 47);
+        --bg: rgb(113, 70, 143);
+        --exp-bg: rgb(56, 48, 66);
+        --callout-icon: var(--callout-icon-bug);
     }
 }
 
 // 124, 61, 56
+
+.sidebar {
+    height: 100%;
+    padding: 0 !important;
+    width: calc((100% - $pageWidth) / 2) !important;
+}
+
+.sidebar.right {
+    padding-left: 2rem !important;
+    right: 0 !important;
+}
+
+.sidebar.left {
+    padding-right: 2rem !important;
+    left: 0 !important;
+}

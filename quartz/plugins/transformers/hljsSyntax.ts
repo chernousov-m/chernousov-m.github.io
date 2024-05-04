@@ -64,7 +64,7 @@ function add(directives: (Mode | 'self')[], mode: Mode | 'self', depth: number):
       scope: mode.scope,
       beginScope: mode.beginScope,
       endScope: mode.endScope,
-      contains: directives.concat(mode.contains?.flatMap((mode) => { if (depth < 10) { return [add(directives, mode, depth + 1)] } else { return directives.concat([mode]) }}) ?? []),
+      contains: directives.concat(mode.contains?.flatMap((mode) => { if (depth < 15) { return [add(directives, mode, depth + 1)] } else { return directives.concat([mode]) }}) ?? []),
       endsParent: mode.endsParent,
       endsWithParent: mode.endsWithParent,
       endSameAsBegin: mode.endSameAsBegin,

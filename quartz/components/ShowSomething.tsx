@@ -1,15 +1,20 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-export interface HideSomethingOptions {
+export interface ShowSomethingOptions {
+  default: boolean
   key: string
   component: QuartzComponent
 }
 
-export default ((opts?: HideSomethingOptions) => {
+export default ((opts?: ShowSomethingOptions) => {
   if (opts) {
     const Component = opts.component
     const HideSomething: QuartzComponent = (props: QuartzComponentProps) => {
-      if (props.fileData.frontmatter && props.fileData.frontmatter["hide-" + opts.key] == "true") {
+      var show = opts.default
+      if (props.fileData.frontmatter && props.fileData.frontmatter['show-' + opts.key]) {
+        show = props.fileData.frontmatter['show-' + opts.key] == 'true'
+      }
+      if (!show) {
         return <></>
       }
       return <Component {...props} />
