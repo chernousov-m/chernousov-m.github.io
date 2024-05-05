@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: false,
     analytics: null,
     locale: "en-US",
-    baseUrl: "chernousov-m.github.io",
+    baseUrl: "swiftaddict.com",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
