@@ -29,6 +29,7 @@ export default (() => {
           </>
         )}
         <meta name="google-site-verification" content="PbloHGAr3asPvrqJnClGOjRHSf2LmKjuMNZoCi5nXP4" />
+        <meta name="google-site-verification" content="ciRgxDK7SUIaSQgeq9fcyFrFfXl0G1OJyyp6K3ZJd5g" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
