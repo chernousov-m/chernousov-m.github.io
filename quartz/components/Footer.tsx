@@ -25,6 +25,7 @@ export default ((opts?: Options) => {
             </li>
           ))}
         </ul>
+        <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0544388391a4daab8053ad68022af48"}'></script>
       </footer>
     )
   }
