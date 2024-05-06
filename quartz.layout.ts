@@ -22,7 +22,8 @@ export const sharedPageComponents: SharedLayout = {
   ],
   footer: CustomFooter({
     links: {
-      GitHub: "https://github.com/chernousov-m"
+      GitHub: "https://github.com/chernousov-m",
+      LinkedIn: "https://www.linkedin.com/in/maksim-chernousov",
     },
   }),
 }
