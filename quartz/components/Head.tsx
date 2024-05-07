@@ -16,6 +16,7 @@ export default (() => {
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
 
     const iconPath = joinSegments(baseDir, "static/icon.png")
+    const ogImagePath = `https://${cfg.baseUrl}/static/og-image.png`
 
     return (
       <head>
@@ -30,10 +31,11 @@ export default (() => {
         )}
         <meta name="google-site-verification" content="PbloHGAr3asPvrqJnClGOjRHSf2LmKjuMNZoCi5nXP4" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {cfg.baseUrl && <meta property="og:image" content={ogImagePath} />}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:width" content="1200" />
-        <meta property="og:height" content="675" />
+        <meta property="og:width" content="1600" />
+        <meta property="og:height" content="900" />
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta http-equiv='cache-control' content='no-cache'/>
