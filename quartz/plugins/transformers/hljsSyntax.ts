@@ -13,6 +13,21 @@ export const HLJSSyntaxHighlighting: QuartzTransformerPlugin<undefined> = () => 
         className: str,
         begin: RegExp("\\/\\*@START_" + token + "@\\*\\/"),
         end: RegExp("\\/\\*@END_" + token + "@\\*\\/"),
+        returnBegin: true,
+        // returnEnd: true,
+        contains: [
+          {
+            className: 'editor-directive',
+            match: RegExp("\\/\\*@END_[A-Z_]+@\\*\\/"),
+            endsParent: true
+          },
+          {
+            className: 'editor-directive',
+            match: RegExp("\\/\\*@[A-Z_]+@\\*\\/"),
+            // end: RegExp("@\\*\\/")
+          },
+          
+        ]
       }
     }    
     var directives = [

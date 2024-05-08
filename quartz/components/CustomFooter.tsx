@@ -29,6 +29,5 @@ export default ((opts?: Options) => {
   }
 
   CustomFooter.css = style
-  CustomFooter.beforeDOMLoaded = hljsscript
   return CustomFooter
 }) satisfies QuartzComponentConstructor

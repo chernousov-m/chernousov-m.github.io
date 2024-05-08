@@ -21,6 +21,11 @@ body {
     tab-size: 4;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 p {
     line-height: 2rem;
 }
@@ -163,22 +168,8 @@ code:not(.hljs) {
     border-radius: 4px;
 }
 
-.hljs-line-highlight {
-    background-color: rgb(48, 50, 56);
-    box-shadow: 0 0 0 100vmax rgb(48, 50, 56);
-    clip-path: inset(0 -100vmax);
-}
-
-.hljs-line-highlight-addition {
-    background-color: rgba(24, 38, 31, 0.5);
-    box-shadow: 0 0 0 100vmax rgba(24, 38, 31, 0.5);
-    clip-path: inset(0 -100vmax);
-}
-
-.hljs-line-highlight-deletion {
-    background-color: rgba(46, 28, 31, 0.5);
-    box-shadow: 0 0 0 100vmax rgba(46, 28, 31, 0.5);
-    clip-path: inset(0 -100vmax);
+.hljs-editor-directive {
+    display: none;
 }
 
 .hljs-meta {

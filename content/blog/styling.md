@@ -764,7 +764,7 @@ struct Padded: PrimitiveButtonStyle {
 }
 ```
 Gives us the following result:
-![[styling-image-0.png]]
+![[styling-image-0.webp|2436x1125]]
 Note that the order of the applied modifiers is reversed. This is due to environment propagation. Suppose we have an array in the environment, and we add a value to the array with a special modifier:
 ```swift
 extension EnvironmentValues {
