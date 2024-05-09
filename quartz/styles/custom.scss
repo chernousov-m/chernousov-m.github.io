@@ -17,8 +17,12 @@ body {
     background-color: rgb(41, 42, 47);
     font-size: larger;
     font-weight: bolder;
-    font-family: monospace;
+    font-family: "Menlo", "MenloPreloaded", monospace;
     tab-size: 4;
+}
+
+code {
+    font-family: "Menlo", "MenloPreloaded", monospace;
 }
 
 img {

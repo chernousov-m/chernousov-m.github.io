@@ -15,7 +15,7 @@ section {
   max-width: 100%;
   box-sizing: border-box;
   background-color: var(--light);
-  font-family: var(--bodyFont);
+  // font-family: var(--bodyFont);
   color: var(--darkgray);
 }
 
@@ -258,7 +258,7 @@ h4,
 h5,
 h6,
 thead {
-  font-family: var(--headerFont);
+  // font-family: var(--headerFont);
   color: var(--dark);
   font-weight: revert;
   margin-bottom: 0;
@@ -280,7 +280,7 @@ h6 {
     opacity: 0;
     transition: opacity 0.2s ease;
     transform: translateY(-0.1rem);
-    font-family: var(--codeFont);
+    // font-family: var(--codeFont);
     user-select: none;
   }
 
@@ -323,7 +323,7 @@ figure[data-rehype-pretty-code-figure] {
   position: relative;
 
   & > [data-rehype-pretty-code-title] {
-    font-family: var(--codeFont);
+    // font-family: var(--codeFont);
     font-size: 0.9rem;
     padding: 0.1rem 0.5rem;
     border: 1px solid var(--lightgray);
@@ -339,7 +339,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 pre {
-  font-family: var(--codeFont);
+  // font-family: var(--codeFont);
   padding: 0 0.5rem;
   border-radius: 5px;
   overflow-x: auto;
@@ -399,7 +399,7 @@ pre {
 code {
   font-size: 0.9em;
   color: var(--dark);
-  font-family: var(--codeFont);
+  // font-family: var(--codeFont);
   border-radius: 5px;
   padding: 0.1rem 0.2rem;
   background: var(--lightgray);

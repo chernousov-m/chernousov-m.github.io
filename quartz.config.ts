@@ -21,9 +21,9 @@ const config: QuartzConfig = {
       fontOrigin: "local",
       cdnCaching: true,
       typography: {
-        header: "Menlo, MenloPreloaded",
-        body: "Menlo, MenloPreloaded",
-        code: "Menlo, MenloPreloaded",
+        header: "Menlo",
+        body: "Menlo",
+        code: "Menlo",
       },
       colors: {
         lightMode: {
