@@ -1,6 +1,5 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import style from "./styles/footer.scss"
-import hljsscript from "./scripts/hljs.inline"
 
 interface Options {
   links: Record<string, string>
@@ -14,7 +13,7 @@ export default ((opts?: Options) => {
       <footer class={`${displayClass ?? ""}`}>
         <hr />
         <p>
-          {year} © Chernousov Maxim
+          {year} © Chernousov Maksim
         </p>
         <ul>
           {Object.entries(links).map(([text, link]) => (

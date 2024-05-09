@@ -1,24 +1,25 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import CustomFooter from './quartz/components/CustomFooter'
-import Links from "./quartz/components/Links"
+import Link from "./quartz/components/Link"
 import ShowSomething from "./quartz/components/ShowSomething"
+import SiteTitle from "./quartz/components/SiteTitle"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [
-    Links({
+    SiteTitle(),
+    Link({
       links: [
         { url: "/", title: 'Blog'}
       ]
     }),
-    Links({
+    Link({
       links: [
         { url: "/notes", title: 'Notes'}
       ]
     }),
-    Component.Search()
   ],
   footer: CustomFooter({
     links: {
@@ -31,6 +32,7 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
+    Component.Search(),
     ShowSomething({
       default: true,
       key: 'content-meta',

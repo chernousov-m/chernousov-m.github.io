@@ -5,6 +5,8 @@ aliases:
 description: My blog posts about Swift development and everything else
 show-content-meta: "false"
 ---
+## [[serialize-this|Serializing code execution in modern concurrency]]
+
 ## [[styling|Generalizing styling APIs for SwiftUI components]]
 
 When you need to develop an app using SwiftUI, you will inevitably end up building your design system. And your components will require their own styling. Let's design the API for that.

@@ -11,7 +11,7 @@ export interface LinksOptions {
 }
 
 export default ((opts?: LinksOptions) => {
-    const Links: QuartzComponent = () => {
+    const Link: QuartzComponent = () => {
         if (opts) {
         return (
                 <div class="links">
@@ -24,5 +24,5 @@ export default ((opts?: LinksOptions) => {
             return null
         }
     }
-    return Links
+    return Link
 }) satisfies QuartzComponentConstructor
