@@ -5,7 +5,7 @@ description: Today we'll implement the missing concept in modern concurrency - s
 show-content-meta: "false"
 ---
 # Serialization in `async/await` world
-In pre-concurrency world we had a useful concept of serialization when we worked with dispatch queues. But in `async/await` this concept seems to be missing. Let's implement execution serialization ourselves and discuss the use cases
+In the pre-concurrency world we had a useful concept of serialization when we worked with dispatch queues. But in `async/await` this concept seems to be missing. Let's implement execution serialization ourselves and discuss the use cases
 
 # What is serialization?
 A good example of the use case for serialization is a token refresh mechanism. Our server requests might be parallel to speed up the loading of the screen, but the token refresh must be performed exclusively; all the other requests must wait for the refresh to complete before they can proceed. Typically this is implemented using concurrent `DispatchQueue` and a barrier to refresh the token. Here is the toy example:
@@ -113,8 +113,25 @@ actor Service {
 ```
 The code has a lot of room for improvement; for example it refreshes the token multiple times if there were lots of requests when the token expired, but the token refresh flow is not the topic of this article. The important part for us is the serialization of the token refresh. Our `refreshTokens()` method serializes its execution so that only one refresh at the time happens. Now let's implement it.
 # Implementing serialization
-
 Now, how do we actually implement it? Well, let's start simple and refine our solution as we go further. First, we need a way to know if the operation is going already:
+```swift
+actor SerializationService {
+	var operationGoing: Bool
+
+	func serialize<T>(
+		_ closure: @escaping @Sendable () async -> T
+	) async -> T {
+		if operationGoing {
+			// wait until it's done
+		}
+		defer { operationGoing = false }
+
+		operationGoing = true
+		return await closure()
+	}
+}
+```
+But how do we wait until the current task is done? Well, we can wrap our operation in the `Task` and await it's value:
 ```swift
 actor SerializationService {
 	var currentTask: Task<Void, Never>?
@@ -129,9 +146,8 @@ actor SerializationService {
 		let task = Task {
 			await closure()
 		}
+		// we create a new one for subsequent calls to await on
 		currentTask = Task { 
-			// we cannot just cast our task, so we create a new one for 
-			// subsequent calls to await on
 			_ = await task.value
 		}
 		return await task.value
@@ -147,7 +163,7 @@ actor SerializationService {
 		_ closure: @escaping @Sendable () async -> T
 	) async -> T {
 		while let currentTask {
-			await currentTask.value
+			await currentTask.value // 1
 		}
 		defer { currentTask = nil }
 		let task = Task {
@@ -158,7 +174,7 @@ actor SerializationService {
 			// subsequent calls to await on
 			_ = await task.value
 		}
-		return await task.value
+		return await task.value // 2
 	}
 }
 ```
@@ -187,91 +203,109 @@ actor SerializationService {
 	}
 }
 ```
-`Task.yield()` suspends current function and transfers control to another task and, at some point in future, the code after our second `await` will continue. Now that we have a working implementation let's enhance it with other features.
-
-# Reentrancy
-What if our serialized function at some point calls another one that also serializes its execution? Then we get an `async/await` version of a deadlock. We need to make the `serialize(_:)` method reentrant. First, we want to store multiple current tasks. Second, we need a way to know if we're in serialized context right now. Let's define our `currentTasks` as a dictionary instead of a single task:
+`Task.yield()` suspends current function and transfers control to another task and, at some point in future, the code after our second `await` will continue. And now we don't even need a task to await on in subsequent calls, we can replace it with a `Bool` value indicating that there is an ongoing operation in progress:
 ```swift
 actor SerializationService {
-	var currentTasks: [/*@START_MENU_TOKEN@*/Key/*@END_MENU_TOKEN@*/: Task<Void, Never>] = [:]
+	var operationRunning = false
 
 	func serialize<T>(
 		_ closure: @escaping @Sendable () async -> T
 	) async -> T {
-		let key = /*@START_MENU_TOKEN@*/Key()/*@END_MENU_TOKEN@*/
-		while let current = currentTasks[key] {
-			await current.value
+		while operationRunning {
 			await Task.yield()
 		}
-		defer { currentTasks[key] = nil }
-		let task = Task {
-			await closure()
+		defer { operationRunning = false }
+
+		operationRunning = true
+		return await closure()
+	}
+}
+```
+We can also remove the `@escaping` attribute since our closure is called directly in the method
+```swift
+actor SerializationService {
+	var operationRunning = false
+
+	func serialize<T>(
+		_ closure: @Sendable () async -> T
+	) async -> T {
+		while operationRunning {
+			await Task.yield()
 		}
-		currentTasks[key] = Task { 
-			_ = await task.value
+		defer { operationRunning = false }
+
+		operationRunning = true
+		return await closure()
+	}
+}
+```
+Now that we have a basic implementation, let's enhance it.
+# Reentrancy
+What if our serialized function at some point calls another one that also serializes its execution? Then we get an `async/await` version of a deadlock. We need to make the `serialize(_:)` method reentrant. First, we want to store multiple current tasks. Second, we need a way to know if we're in serialized context right now. Let's define our `currentTasks` as a dictionary instead of a single task:
+```swift
+actor SerializationService {
+	var operationRunning: [/*@START_MENU_TOKEN@*/Key/*@END_MENU_TOKEN@*/: Bool] = [:]
+
+	func serialize<T>(
+		_ closure: @Sendable () async -> T
+	) async -> T {
+		let key = /*@START_MENU_TOKEN@*/Key()/*@END_MENU_TOKEN@*/
+		while operationRunning[key, default: false] {
+			await Task.yield()
 		}
-		return await task.value
+		defer { operationRunning[key] = false }
+
+		operationRunning[key] = true
+		return await closure()
 	}
 }
 ```
 Now what about the key? Let's have the depth of the recursive calls as the key for our dictionary:
 ```swift
 actor SerializationService {
-	var currentTasks: [Int: Task<Void, Never>] = [:]
+	var operationRunning: [/*@START_MENU_TOKEN@*/Key/*@END_MENU_TOKEN@*/: Bool] = [:]
 
 	func serialize<T>(
-		_ closure: @escaping @Sendable () async -> T
+		_ closure: @Sendable () async -> T
 	) async -> T {
 		let key = /*@START_MENU_TOKEN@*/currentDepth/*@END_MENU_TOKEN@*/
-		while let current = currentTasks[key] {
-			await current.value
+		while operationRunning[key, default: false] {
 			await Task.yield()
 		}
-		defer { currentTasks[key] = nil }
-		let task = Task {
-			// somehow increase current depth for the closure
-			await closure()
-		}
-		currentTasks[key] = Task { 
-			_ = await task.value
-		}
-		return await task.value
+		defer { operationRunning[key] = false }
+
+		operationRunning[key] = true
+		return await closure()
 	}
 }
 ```
 But how do we get the current depth? `TaskLocal`s can help!
-
 ## `TaskLocal`
-`TaskLocal` is a special property wrapper for storing data in a unique for each task storage. It is similar to thread local variables. What it means is that every task we create has its own storage for task locals. And we can change the task local variable for the concrete task, using `TaskLocal`'s projected value's method `withValue(_:operation:)` to override the value for the given operation. Let's do just that.
+`TaskLocal` is a special property wrapper for storing data in a unique for each task storage. It is similar to thread local variables. What it means is that every task we create has its own storage for task locals. The difference between task locals and thread locals is that task local values are inherited (copied) by the child task. And we can change the task local variable for the concrete task, using `TaskLocal`'s projected value's method `withValue(_:operation:)` to override the value for the given operation. Let's do just that.
 ```swift
 actor SerializationService {
 	@TaskLocal
 	static var currentDepth = 0
 
-	var currentTasks: [Int: Task<Void, Never>] = [:]
+	var operationRunning: [Int: Bool] = [:]
 
 	func serialize<T>(
-		_ closure: @escaping @Sendable () async -> T
+		_ closure: @Sendable () async -> T
 	) async -> T {
 		let key = SerializationService.currentDepth
-		while let current = currentTasks[key] {
-			await current.value
+		while operationRunning[key, default: false] {
 			await Task.yield()
 		}
-		defer { currentTasks[key] = nil }
-		let task = Task {
-			await SerializationService.$currentDepth.withValue(key + 1) {
-				await closure()
-			}
+		defer { operationRunning[key] = false }
+
+		operationRunning[key] = true
+		return await SerializationService.$currentDepth.withValue(key + 1) {
+			await closure()
 		}
-		currentTasks[key] = Task { 
-			_ = await task.value
-		}
-		return await task.value
 	}
 }
 ```
-Now our serialization method allows reentrancy, but it only accepts `@escaping` closures that don't throw, yet most of the times the functions we'll pass here will throw, so let's fix that.
+Now our serialization method allows reentrancy, but it only accepts closures that don't throw, yet most of the times the functions we'll pass here will throw, so let's fix that.
 # Making our closure throwing
 If we simply make our closure and the `serialize(_:)` method throwing, we lose the ability to use it with non-throwing functions. One possible alternative is `rethrows`.
 ## `rethrows`
@@ -309,6 +343,69 @@ extension Collection {
 ```
 Right now, `rethrows` is the only option for us, but there is another way in the future version of Swift. To use it you need to change the Swift toolchain and enable the feature, but let's talk about it now, so that I don't need to edit this article once this feature is available. And this feature is typed `throws`.
 ## Typed `throws`
-This feature allows us to specialize the error thrown from a function. 
-## Continuation
+This feature allows us to specialize the type of the error thrown from a function, and we can write a function that rethrows the same type of the error:
+```swift
+func select<P, R, E: Swift.Error>(
+	_ parameter1: P,
+	_ parameter2: P
+	operation: (P) throws(E) -> R
+) throws(E) -> T {
+	do {
+		return try operation(parameter1)
+	} catch {
+		return try operation(parameter2)
+	}
+}
+```
+It works the same way as `rethrows` in a sense that it doesn't throw if the `operation` doesn't, but when it does, it throws exactly the same type of error that `operation` throws.  So we can utilize typed `throws` at call-site:
+```swift
+enum Error: Swift.Error {
+	case parameterInvalid
+	case somethingWrong
+}
+
+func inverse(number: Double) throws(Error) -> Double {
+	guard number != 0 else { throw .parameterInvalid }
+	guard !Task.isCancelled else { throw .somethingWrong }
+
+	return 1 / number
+}
+
+do {
+	print(try select(0, 0, operation: inverse(number:)))
+} catch {
+	switch error {
+	case .parameterInvalid:
+		print("Invalid parameters")
+	case .somethingWrong:
+		print("Task is cancelled")
+	}
+}
+```
+We can do the same for our serialization method as it doesn't have its own errors. But this feature is not live yet, so let's stick to the `rethrows`. To start supporting throwing functions we only need to mark the `closure` and the method as `throws` and `rethrows` respectively, and put the `try` operator in the places it needs to be in
+```swift
+actor SerializationService {
+	@TaskLocal
+	static var currentDepth = 0
+
+	var operationRunning: [Int: Bool] = [:]
+
+	func serialize<T>(
+		_ closure: @Sendable () async -> T
+	) async -> T {
+		let key = SerializationService.currentDepth
+		while operationRunning[key, default: false] {
+			await Task.yield()
+		}
+		defer { operationRunning[key] = false }
+
+		operationRunning[key] = true
+		return try await SerializationService.$currentDepth.withValue(key + 1) {
+			try await closure()
+		}
+	}
+}
+```
+# Note on structured concurrency
+Because we use task local values, our implementation is now constrained to be used from either structured concurrency context, or unstructured tasks using `Task.init`. If you use `Task.detached`, your task will not inherit task local values and our method won't work properly.
 
