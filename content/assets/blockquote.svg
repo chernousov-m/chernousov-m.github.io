@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+    <defs>
+        <clipPath id="insideCircleOnly">
+            <rect width="7" height="100%" ry="3.5" rx="3.5"/>
+        </clipPath>
+  </defs>
+    <rect width="7" height="100%" fill="#304d7f" stroke="#3b82f7" stroke-width="2" ry="3.5" rx="3.5" clip-path="url(#insideCircleOnly)"/>
+    <line x1="3.5" y1="0" x2="100%" y2="0" stroke="#3b82f7" />
+    <line x1="3.5" y1="100%" x2="100%" y2="100%" stroke="#3b82f7" />
+</svg>

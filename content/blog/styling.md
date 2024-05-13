@@ -2,7 +2,6 @@
 title: Generalizing styling APIs for SwiftUI components
 date: 2024-05-05
 description: When you need to develop an app using SwiftUI, you will inevitably end up building your design system. And your components will require their own styling. Let's design the API for that
-show-toc: "true"
 ---
 # Generalizing styling APIs for SwiftUI components.
 >[!warning]

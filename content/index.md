@@ -6,7 +6,9 @@ description: My blog posts about Swift development and everything else
 show-content-meta: "false"
 ---
 ## [[serialize-this|Serializing code execution in modern concurrency]]
+In the pre-concurrency world, we had mechanisms for serializing code execution. Serial `DispatchQueue`s allowed us to run code one block after another. But modern concurrency misses this concept. Let's fill the gap and implement it ourselves
 
+---
 ## [[styling|Generalizing styling APIs for SwiftUI components]]
 
 When you need to develop an app using SwiftUI, you will inevitably end up building your design system. And your components will require their own styling. Let's design the API for that.

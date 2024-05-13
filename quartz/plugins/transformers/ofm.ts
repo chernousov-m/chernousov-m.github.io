@@ -664,11 +664,11 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options> 
       }
 
       if (opts.callouts) {
-        js.push({
-          script: calloutScript,
-          loadTime: "afterDOMReady",
-          contentType: "inline",
-        })
+        // js.push({
+        //   script: calloutScript,
+        //   loadTime: "afterDOMReady",
+        //   contentType: "inline",
+        // })
       }
 
       if (opts.mermaid) {

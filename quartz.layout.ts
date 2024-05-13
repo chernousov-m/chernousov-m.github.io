@@ -36,7 +36,7 @@ export const defaultContentPageLayout: PageLayout = {
     ShowSomething({
       default: true,
       key: 'content-meta',
-      component: Component.ContentMeta({showReadingTime: false})
+      component: Component.ContentMeta()
     }),
   ],
   left: [],
