@@ -5,6 +5,8 @@ description: Today we'll implement the missing concept in modern concurrency - s
 ---
 # Serialization in `async/await` world
 In the pre-concurrency world, we had a useful concept of serialization when we worked with dispatch queues. But in `async/await` this concept seems to be missing. Let's implement execution serialization ourselves.
+
+---
 # What is serialization?
 A good example of the use case for serialization is a token refresh mechanism. Our server requests might be parallel to speed up the loading of the screen, but the token refresh must be performed exclusively; all the other requests must wait for the refresh to complete before they can proceed. Typically, this is implemented using concurrent `DispatchQueue` and a barrier to refresh the token. Here is a toy example:
 ```swift

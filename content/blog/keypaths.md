@@ -6,6 +6,7 @@ description: KeyPaths - they're everywhere nowadays. Let's explore how we can de
 # The hidden (in plain sight) power of `KeyPath`s
 `KeyPath`s - they're everywhere nowadays. Let's explore how we can design better APIs with them and have some fun along the way.
 
+---
 # Lenses
 Before we begin exploring `KeyPath`s in the wild, let us start with a little history overview and take a look at their ancestors, Lenses - which came to our world (as many other really useful things) from functional programming. 
 I won't give any Haskell (or other functional language) code for the examples, mainly because I can't really read it, but Swift is more than enough to follow the concept. 
