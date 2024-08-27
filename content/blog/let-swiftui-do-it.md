@@ -1,6 +1,6 @@
 ---
 title: Implementing a countdown timer in pure SwiftUI
-date: 2024-05-19
+date: 2024-08-27
 description: Today we'll implement a simple countdown timer in pure SwiftUI in a robust, glitch-free way.
 ---
 # Implementing a countdown timer in SwiftUI
