@@ -5,6 +5,10 @@ aliases:
 description: My blog posts about Swift development and everything else
 show-content-meta: "false"
 ---
+## [[backport|Using newer SwiftUI APIs on earlier versions of iOS]]
+When you need to support older versions of iOS, you often can't just use all the newer APIs you see at WWDC. Or can you?
+
+---
 ## [[let-swiftui-do-it|Countdown timer view in pure SwiftUI without Timer]]
 Recently at work, I stumbled upon an interesting component. While all the implementations on the internet use `Timer` for the purposes of counting time, I came up with a better solution. Let's see.
 
