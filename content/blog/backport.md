@@ -1,5 +1,5 @@
 ---
-title: Backporting newer SwiftUI APIs. Part I
+title: Backporting newer SwiftUI APIs
 date: 2025-02-23
 description: Today we'll find a way to use a couple of newer SwiftUI APIs in earlier versions of the operating system.
 ---
