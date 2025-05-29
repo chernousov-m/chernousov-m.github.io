@@ -5,6 +5,11 @@ aliases:
 description: My blog posts about Swift development and everything else
 show-content-meta: "false"
 ---
+
+## [[on-dismiss|Implementing missing SwiftUI functionality: the onDismiss modifier]]
+SwiftUI’s lifecycle management is surprisingly limited — especially for non-modal views. In this article, I walk through a practical solution to bring back the functionality Apple forgot to implement in SwiftUI, making dismiss detection reliable and reusable.
+
+---
 ## [[backport|Using newer SwiftUI APIs on earlier versions of iOS]]
 When you need to support older versions of iOS, you often can't just use all the newer APIs you see at WWDC. Or can you?
 
